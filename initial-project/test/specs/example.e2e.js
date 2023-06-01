@@ -25,7 +25,7 @@ describe('My first test suite', () => {
     expect(browser).toHaveUrlContaining('coderadio.freecodecamp.org');
   });
 
-  it('should assert web elements', async () => {
+  it.skip('should assert web elements', async () => {
     await browser.url('https://www.example.com');
     await browser.pause(2000);
 
@@ -34,5 +34,19 @@ describe('My first test suite', () => {
     await expect(pageElement).toBeDisplayed();
     await expect(pageElement).toHaveTextContaining('Domain');
     await expect(pageElement).toHaveText('Example Domain');
+  });
+
+  it('should test form and input elements', async () => {
+    await browser.url('https://www.saucedemo.com/');
+
+    let usernameInput = await $('#user-name');
+    let passwordInput = await $('#password');
+    let loginButton = await $('input[data-test="login-button"]');
+
+    await usernameInput.setValue('standard_user');
+    await passwordInput.setValue('secret_sauce');
+    await loginButton.click();
+
+    await expect(await $('#inventory_container')).toBeDisplayed();
   });
 });
