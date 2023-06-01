@@ -9,7 +9,7 @@ describe('My first test suite', () => {
     await browser.pause(2000);
   });
 
-  it('should assert browser title and url', async () => {
+  it.skip('should assert browser title and url', async () => {
     await browser.url('https://coderadio.freecodecamp.org/');
     await browser.pause(2000);
 
@@ -23,5 +23,16 @@ describe('My first test suite', () => {
     // NEW WAY
     expect(browser).toHaveTitleContaining('freeCodeCamp.org Code Radio');
     expect(browser).toHaveUrlContaining('coderadio.freecodecamp.org');
+  });
+
+  it('should assert web elements', async () => {
+    await browser.url('https://www.example.com');
+    await browser.pause(2000);
+
+    const pageElement = await $('h1');
+    await expect(pageElement).toExist();
+    await expect(pageElement).toBeDisplayed();
+    await expect(pageElement).toHaveTextContaining('Domain');
+    await expect(pageElement).toHaveText('Example Domain');
   });
 });
