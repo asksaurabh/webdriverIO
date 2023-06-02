@@ -50,7 +50,7 @@ describe('My first test suite', () => {
     await expect(await $('#inventory_container')).toBeDisplayed();
   });
 
-  it('should select selectboxes and radioboxes', async () => {
+  it.skip('should select selectboxes and radioboxes', async () => {
     await browser.url('https://devexpress.github.io/testcafe/example/');
 
     const selectBox = await $('#preferred-interface');
@@ -61,5 +61,11 @@ describe('My first test suite', () => {
 
     const radioElement = await $('input[data-testid="windows-radio"]');
     await radioElement.click();
+  });
+
+  it('should set window size', async () => {
+    await browser.setWindowSize(800, 600);
+    await browser.url('https://www.example.com');
+    await browser.pause(2000);
   });
 });
