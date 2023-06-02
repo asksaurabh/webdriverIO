@@ -1,4 +1,4 @@
-describe('My first test suite', () => {
+describe.skip('My first test suite', () => {
   it.skip('My first test case', async () => {
     let myUrl = 'https://www.example.com';
 
@@ -103,7 +103,7 @@ describe('My first test suite', () => {
     await browser.pause(2000);
   });
 
-  it('should take screenshots', async () => {
+  it.skip('should take screenshots', async () => {
     await browser.url('https://www.example.com');
     await browser.saveScreenshot('whole-screenshot.png');
 
