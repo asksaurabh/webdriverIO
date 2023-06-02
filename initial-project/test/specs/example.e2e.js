@@ -63,9 +63,23 @@ describe('My first test suite', () => {
     await radioElement.click();
   });
 
-  it('should set window size', async () => {
+  it.skip('should set window size', async () => {
     await browser.setWindowSize(800, 600);
     await browser.url('https://www.example.com');
     await browser.pause(2000);
+  });
+
+  it('should wait for dynamic content', async () => {
+    await browser.url('https://devexpress.github.io/testcafe/example/');
+
+    const commentsBox = await $('textarea[data-testid="comments-area"]');
+    expect(commentsBox).toBeDisabled();
+
+    const checkBox = await $('input[data-testid="tried-testcafe-checkbox"]');
+    await checkBox.click();
+
+    // Check documentation for examples of waitForEnabled(), waitForClickable() etc...
+    await commentsBox.waitForEnabled();
+    expect(commentsBox).toBeEnabled();
   });
 });
