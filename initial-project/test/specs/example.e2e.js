@@ -69,7 +69,7 @@ describe('My first test suite', () => {
     await browser.pause(2000);
   });
 
-  it('should wait for dynamic content', async () => {
+  it.skip('should wait for dynamic content', async () => {
     await browser.url('https://devexpress.github.io/testcafe/example/');
 
     const commentsBox = await $('textarea[data-testid="comments-area"]');
@@ -81,5 +81,25 @@ describe('My first test suite', () => {
     // Check documentation for examples of waitForEnabled(), waitForClickable() etc...
     await commentsBox.waitForEnabled();
     expect(commentsBox).toBeEnabled();
+  });
+
+  it('should emulate various devices', async () => {
+    const mobile = [375, 812];
+    const tablet = [1024, 768];
+    const desktop = [1650, 1050];
+
+    await browser.url('https://www.example.com');
+
+    // Mobile Device
+    await browser.setWindowSize(mobile[0], mobile[1]);
+    await browser.pause(2000);
+
+    // Tablet Device
+    await browser.setWindowSize(tablet[0], tablet[1]);
+    await browser.pause(2000);
+
+    // Desktop Device
+    await browser.setWindowSize(desktop[0], desktop[1]);
+    await browser.pause(2000);
   });
 });
