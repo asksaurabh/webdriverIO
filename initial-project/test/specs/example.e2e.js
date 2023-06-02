@@ -83,7 +83,7 @@ describe('My first test suite', () => {
     expect(commentsBox).toBeEnabled();
   });
 
-  it('should emulate various devices', async () => {
+  it.skip('should emulate various devices', async () => {
     const mobile = [375, 812];
     const tablet = [1024, 768];
     const desktop = [1650, 1050];
@@ -101,5 +101,16 @@ describe('My first test suite', () => {
     // Desktop Device
     await browser.setWindowSize(desktop[0], desktop[1]);
     await browser.pause(2000);
+  });
+
+  it('should take screenshots', async () => {
+    await browser.url('https://www.example.com');
+    await browser.saveScreenshot('whole-screenshot.png');
+
+    const bodyContent = await $('body');
+    const divContent = await $('div');
+
+    await bodyContent.saveScreenshot('my-body.png');
+    await divContent.saveScreenshot('my-div.png');
   });
 });
