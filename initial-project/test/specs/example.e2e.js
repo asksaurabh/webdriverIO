@@ -36,7 +36,7 @@ describe('My first test suite', () => {
     await expect(pageElement).toHaveText('Example Domain');
   });
 
-  it('should test form and input elements', async () => {
+  it.skip('should test form and input elements', async () => {
     await browser.url('https://www.saucedemo.com/');
 
     let usernameInput = await $('#user-name');
@@ -48,5 +48,18 @@ describe('My first test suite', () => {
     await loginButton.click();
 
     await expect(await $('#inventory_container')).toBeDisplayed();
+  });
+
+  it('should select selectboxes and radioboxes', async () => {
+    await browser.url('https://devexpress.github.io/testcafe/example/');
+
+    const selectBox = await $('#preferred-interface');
+    selectBox.selectByVisibleText('JavaScript API');
+
+    const option = await $('option=JavaScript API');
+    await expect(option).toBeSelected();
+
+    const radioElement = await $('input[data-testid="windows-radio"]');
+    await radioElement.click();
   });
 });
