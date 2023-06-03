@@ -64,4 +64,16 @@ describe('Advanced Testing', () => {
     await browser.url('https://www.google.com');
     await browser.pause(5000);
   });
+
+  it.only('execute JS code - sync', async () => {
+    const result = await browser.execute(
+      (a, b) => {
+        return a + b;
+      },
+      5,
+      10
+    );
+
+    await expect(result).toBe(15);
+  });
 });
