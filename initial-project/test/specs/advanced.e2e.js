@@ -43,11 +43,25 @@ describe('Advanced Testing', () => {
     console.log('SESSION ID after RELOAD: ' + browser.sessionId);
   });
 
-  it.only('should create and switch new window tabs', async () => {
+  it('should create and switch new window tabs', async () => {
     await browser.url('https://www.google.com');
     await browser.newWindow('https://www.gmail.com');
     await browser.pause(5000);
     await browser.switchWindow('google.com');
     await browser.pause(2000);
+  });
+
+  it('Network throttle', async () => {
+    await browser.throttle('Regular3G');
+    await browser.url('https://www.google.com');
+    await browser.pause(5000);
+
+    await browser.throttle('Regular4G');
+    await browser.url('https://www.google.com');
+    await browser.pause(5000);
+
+    await browser.throttle('offline');
+    await browser.url('https://www.google.com');
+    await browser.pause(5000);
   });
 });
