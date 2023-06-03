@@ -33,7 +33,13 @@ describe('Advanced Testing', () => {
     expect(errorEl).toHaveText('Internal Server Error');
   });
 
-  it.only('should overwrite original pause command', async () => {
+  it('should overwrite original pause command', async () => {
     await browser.pause(5000);
+  });
+
+  it.only('should change browser session', async () => {
+    console.log('SESSION ID before RELOAD: ' + browser.sessionId);
+    await browser.reloadSession();
+    console.log('SESSION ID after RELOAD: ' + browser.sessionId);
   });
 });
