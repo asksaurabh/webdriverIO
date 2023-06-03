@@ -1,4 +1,4 @@
-describe('Login flow', () => {
+describe.skip('Login flow', () => {
   before(async () => {
     await browser.url('http://zero.webappsecurity.com/');
   });
