@@ -201,6 +201,11 @@ export const config = {
         url: await browser.getUrl(),
       };
     });
+
+    browser.addCommand('waitAndClick', async (elementSelector) => {
+      await $(elementSelector).waitForDisplayed();
+      await $(elementSelector).click();
+    });
   },
   /**
    * Runs before a WebdriverIO command gets executed.

@@ -21,9 +21,15 @@ describe('Advanced Testing', () => {
     await browser.pause(2000);
   });
 
-  it('should get title and url', async () => {
+  it.only('should get title and url and wait to click submit', async () => {
     const { title, url } = await browser.getTitleAndUrl();
     expect(title).toBe('The Internet');
     expect(url).toBe('https://the-internet.herokuapp.com/upload');
+
+    await browser.waitAndClick('#file-submit');
+    await browser.pause(2000);
+
+    const errorEl = await $('h1');
+    expect(errorEl).toHaveText('Internal Server Error');
   });
 });
