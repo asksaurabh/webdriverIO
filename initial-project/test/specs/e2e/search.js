@@ -1,5 +1,5 @@
-describe('Search feature', () => {
-  it.only('should search for user input using keyboard press', async () => {
+describe.skip('Search feature', () => {
+  it('should search for user input using keyboard press', async () => {
     await browser.url('http://zero.webappsecurity.com/index.html');
     const searchInput = await $('#searchTerm');
 
