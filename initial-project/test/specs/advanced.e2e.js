@@ -65,10 +65,24 @@ describe('Advanced Testing', () => {
     await browser.pause(5000);
   });
 
-  it.only('execute JS code - sync', async () => {
+  it('execute JS code - sync', async () => {
     const result = await browser.execute(
       (a, b) => {
         return a + b;
+      },
+      5,
+      10
+    );
+
+    await expect(result).toBe(15);
+  });
+
+  it.only('execute async JS code', async () => {
+    const result = await browser.executeAsync(
+      (a, b, done) => {
+        setTimeout(() => {
+          done(a + b);
+        }, 3000);
       },
       5,
       10
