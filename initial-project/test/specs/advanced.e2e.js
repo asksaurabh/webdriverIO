@@ -21,7 +21,7 @@ describe('Advanced Testing', () => {
     await browser.pause(2000);
   });
 
-  it.only('should get title and url and wait to click submit', async () => {
+  it('should get title and url and wait to click submit', async () => {
     const { title, url } = await browser.getTitleAndUrl();
     expect(title).toBe('The Internet');
     expect(url).toBe('https://the-internet.herokuapp.com/upload');
@@ -31,5 +31,9 @@ describe('Advanced Testing', () => {
 
     const errorEl = await $('h1');
     expect(errorEl).toHaveText('Internal Server Error');
+  });
+
+  it.only('should overwrite original pause command', async () => {
+    await browser.pause(5000);
   });
 });

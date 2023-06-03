@@ -206,6 +206,12 @@ export const config = {
       await $(elementSelector).waitForDisplayed();
       await $(elementSelector).click();
     });
+
+    browser.overwriteCommand('pause', async (origPauseFunction, ms) => {
+      console.log('Sleeping for : ' + ms);
+      await origPauseFunction(ms);
+      return ms;
+    });
   },
   /**
    * Runs before a WebdriverIO command gets executed.
