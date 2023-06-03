@@ -1,6 +1,10 @@
 describe('Advanced Testing', () => {
+  // beforeEach(async () => {
+  //   await browser.url('https://the-internet.herokuapp.com/upload');
+  // });
+
   beforeEach(async () => {
-    await browser.url('https://the-internet.herokuapp.com/upload');
+    await loadWebsite();
   });
 
   it('should test file upload 1', async () => {
@@ -22,3 +26,7 @@ describe('Advanced Testing', () => {
     await browser.pause(2000);
   });
 });
+
+async function loadWebsite() {
+  await browser.url('https://the-internet.herokuapp.com/upload');
+}
