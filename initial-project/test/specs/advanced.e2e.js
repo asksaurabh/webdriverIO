@@ -37,9 +37,17 @@ describe('Advanced Testing', () => {
     await browser.pause(5000);
   });
 
-  it.only('should change browser session', async () => {
+  it('should change browser session', async () => {
     console.log('SESSION ID before RELOAD: ' + browser.sessionId);
     await browser.reloadSession();
     console.log('SESSION ID after RELOAD: ' + browser.sessionId);
+  });
+
+  it.only('should create and switch new window tabs', async () => {
+    await browser.url('https://www.google.com');
+    await browser.newWindow('https://www.gmail.com');
+    await browser.pause(5000);
+    await browser.switchWindow('google.com');
+    await browser.pause(2000);
   });
 });
