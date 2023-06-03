@@ -1,5 +1,5 @@
 describe('Login flow', () => {
-  beforeEach(async () => {
+  before(async () => {
     await browser.url('http://zero.webappsecurity.com/');
   });
 
@@ -15,5 +15,19 @@ describe('Login flow', () => {
 
     const alertMessage = await $('.alert-error');
     await expect(alertMessage).toHaveText('Login and/or password are wrong.');
+  });
+
+  it('should test reset password functionality', async () => {
+    const email = 'test@test.com';
+
+    await browser.waitAndClick('*=Forgot');
+    await $('#user_email').waitForDisplayed();
+    await $('#user_email').setValue(email);
+    await $('input[type="submit"]').click();
+
+    const forgottenPasswordMessage = await $('.span6');
+    await expect(forgottenPasswordMessage).toHaveTextContaining(
+      `email: ${email}`
+    );
   });
 });
