@@ -20,4 +20,10 @@ describe('Advanced Testing', () => {
     await browser.customFileUpload(filePath, '#file-upload', '#file-submit');
     await browser.pause(2000);
   });
+
+  it('should get title and url', async () => {
+    const { title, url } = await browser.getTitleAndUrl();
+    expect(title).toBe('The Internet');
+    expect(url).toBe('https://the-internet.herokuapp.com/upload');
+  });
 });

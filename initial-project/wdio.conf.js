@@ -194,6 +194,13 @@ export const config = {
         await $(submitUploadSelector).click();
       }
     );
+
+    browser.addCommand('getTitleAndUrl', async () => {
+      return {
+        title: await browser.getTitle(),
+        url: await browser.getUrl(),
+      };
+    });
   },
   /**
    * Runs before a WebdriverIO command gets executed.
