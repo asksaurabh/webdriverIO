@@ -1,9 +1,12 @@
 import HomePage from '../pageobjects/HomePage';
+import LoginPage from '../pageobjects/LoginPage';
 
-describe('First test using page objects pattern', () => {
-  it('should load homepage', async () => {
+describe('Login test', () => {
+  it('should not login with invalid username and password', async () => {
     await HomePage.visit();
     await HomePage.clickOnSignIn();
-    await browser.pause(2000);
+    await LoginPage.assertLoginPageIsVisible();
+    await LoginPage.login('test', 'test');
+    await LoginPage.assertLoginPageError();
   });
 });
