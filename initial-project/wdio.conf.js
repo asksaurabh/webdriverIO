@@ -207,6 +207,19 @@ export const config = {
       await $(elementSelector).click();
     });
 
+    browser.addCommand('sauceLogin', async () => {
+      await $('.login-box').$('form').waitForDisplayed();
+      await $('input[data-test="username"]').setValue('standard_user');
+      await $('input[data-test="password"]').setValue('secret_sauce');
+      await $('input[data-test="login-button"]').click();
+    });
+
+    browser.addCommand('sauceLogout', async () => {
+      await $('#react-burger-menu-btn').click();
+      await $('*=Logout').waitForDisplayed();
+      await $('*=Logout').click();
+    });
+
     // browser.overwriteCommand('pause', async (origPauseFunction, ms) => {
     //   console.log('Sleeping for : ' + ms);
     //   await origPauseFunction(ms);

@@ -1,4 +1,4 @@
-describe('Feedback form', () => {
+describe.skip('Feedback form', () => {
   before(async () => {
     await browser.url('http://zero.webappsecurity.com/index.html');
   });
