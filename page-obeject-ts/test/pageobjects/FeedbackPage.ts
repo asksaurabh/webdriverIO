@@ -1,4 +1,6 @@
-class FeedbackPage {
+import AbstractPage from './AbstractPage';
+
+class FeedbackPage extends AbstractPage {
   public get feedbackForm() {
     return $('form');
   }

@@ -1,4 +1,6 @@
-class HomePage {
+import AbstractPage from './AbstractPage';
+
+class HomePage extends AbstractPage {
   public get feedbackLink() {
     return $('#feedback');
   }

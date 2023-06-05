@@ -1,4 +1,6 @@
-class Navbar {
+import AbstractPage from '../AbstractPage';
+
+class Navbar extends AbstractPage {
   public get signInButton() {
     return $('#signin_button');
   }

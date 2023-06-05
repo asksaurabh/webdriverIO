@@ -10,6 +10,7 @@ describe('Login test', () => {
     await LoginPage.assertLoginPageIsVisible();
     await LoginPage.login('test', 'test');
     await LoginPage.assertLoginPageError();
+    await LoginPage.waitForSeconds(2);
   });
 });
 
@@ -25,5 +26,6 @@ describe('Feedback test', () => {
       'This is an automated test'
     );
     await FeedbackPage.assertSuccessfulFeedbackFormSubmission();
+    await FeedbackPage.waitForSeconds(2);
   });
 });
