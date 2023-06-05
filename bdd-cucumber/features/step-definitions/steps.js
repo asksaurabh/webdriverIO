@@ -1,6 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 
-const LoginPage = require('../pageobjects/login.page');
+const LoginPage = require('../pageobjects/LoginPage');
 const SecurePage = require('../pageobjects/secure.page');
 
 const pages = {
