@@ -1,4 +1,4 @@
-import AbstractPage from './AbstractPage';
+const AbstractPage = require('./AbstractPage');
 
 class LoginPage extends AbstractPage {
   get inputUsername() {

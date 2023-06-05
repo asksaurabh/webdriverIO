@@ -1,4 +1,4 @@
-export default class AbstractPage {
+module.exports = class AbstractPage {
   async visit(url) {
     await browser.url(url);
   }
@@ -6,4 +6,4 @@ export default class AbstractPage {
   async waitForSeconds(seconds) {
     await browser.pause(seconds * 1000);
   }
-}
+};
